@@ -1,2 +1,4 @@
-# web-330
-Repository for Enterprise JavaScript II Course
+# WEB 330 Enterprise JavaScript II
+## Contributors
+* John Davidson
+* Robert Kumar
