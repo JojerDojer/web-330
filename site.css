@@ -1,0 +1,86 @@
+/**
+============================================
+; Title: site.css
+; Author: John Davidson
+; Date: 05/28/2023
+; Description: CSS styling to be used for WEB-330 assignments
+============================================
+*/
+/** The margin setting for content within the container div. */
+#container {
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+/** Changes the cursor style to pointer on the color mode selection. */
+#icon-mode:hover {
+  cursor: pointer;
+}
+
+/** Adds left padding to the icon-text id.*/
+#icon-text {
+  padding-left: 10px;
+}
+
+/** Simply floats right.*/
+.pull-right {
+  float: right;
+}
+
+/** The styling of padding for all cards wrapped in the assign-container class. */
+.assign-container {
+  padding: 10px;
+}
+
+/** The styling of width and margin for all cards wrapped in the assign-content class. */
+.assign-content {
+  width: 600px;
+  margin: 3% auto 0;
+}
+
+/** The styling for the results card. */
+.assign-results-text {
+  text-align: center;
+  font-size: 28px;
+}
+
+/** The styling for the h1 main title. */
+.app-header {
+  text-align: center;
+  font-weight: 400;
+}
+
+/** The styling for the anchor that returns users back to the landing page. */
+.return-home {
+  color: #4f3674;
+  text-decoration: none;
+}
+
+/** The styling for the landing page anchor when it is being hovered over.  */
+.return-home:hover {
+  background-color: #D6A800;
+  color: #4F3674;
+}
+
+  /** The styling for the landing page anchor when it has been visited. */
+.return-home:visited {
+  color: #3C275A;
+}
+
+/** The styling for the use of a form. */
+.form {
+  display: inline-grid;
+  grid-template-columns: auto;
+}
+
+/** The styling for the form's padding. */
+.form-field {
+  padding: 20px;
+}
+
+/** The styling for the use of 100% width.  */
+.full-width {
+  width: 100%;
+}
+
