@@ -1,0 +1,32 @@
+/**
+============================================
+; Title: davidson-palindrome.css
+; Author: John Davidson
+; Date: 06/04/2023
+; Description: CSS styling for WEB 330 - assignment 2.2.
+============================================
+*/
+
+
+
+/* Removes the border around the h1 header. */
+h1{
+  border: none;
+}
+
+/* Centers the card, increases the width, and aligns the text to center. */
+.card{
+  margin: auto;
+  text-align: center;
+  width: 100%;
+}
+
+/* Aligns the results header to the left on the results card. */
+#assign-results-header{
+    text-align: left;
+}
+
+.card-title {
+  color: white;
+}
+
