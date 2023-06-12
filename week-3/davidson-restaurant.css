@@ -1,0 +1,42 @@
+/**
+============================================
+; Title: davidson-restaurant.css
+; Author: John Davidson
+; Date: 06/11/2023
+; Description: CSS styling for WEB 330 - assignment 2.2.
+============================================
+*/
+
+/* Styles the menu card in a grid format. */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+/* Removes the border around the h1 header. */
+h1{
+  border: none;
+}
+
+/* Centers the card and increases the width. */
+.card {
+  margin: auto;
+  width: 100%;
+}
+
+/* The card title text was blending in with the background so I gave it a white color. */
+.card-title {
+  color: white;
+}
+
+/* Centers the results text. */
+#order-total {
+  text-align: center;
+}
+
+/* Moves the button further away from the dessert items. */
+#btnOrder {
+  margin-top: 10px;
+}

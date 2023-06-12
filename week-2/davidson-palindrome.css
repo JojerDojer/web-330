@@ -25,7 +25,7 @@ h1{
 #assign-results-header{
     text-align: left;
 }
-
+/* The card title text was blending in with the background so I gave it a white color. */
 .card-title {
   color: white;
 }
