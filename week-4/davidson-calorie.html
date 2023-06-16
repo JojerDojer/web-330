@@ -144,11 +144,11 @@
 
       // Loop through the food list and make a string.
       for (let food of foodList) {
-        foodListData += food.name + ', '
+        foodListData += food.name + ', ';
       }
 
       // Removes the extra comma and closes the tag.
-      foodListData += foodListData.slice(0, -2);
+      foodListData = foodListData.slice(0, -2);
       foodListData += ')</i>';
 
       // Assigns the string in foodListData to the span element.
