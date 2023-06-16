@@ -26,6 +26,12 @@ body.light-theme {
   --btn-hover-background-color: #d6a800;
   --btn-hover-color: #4f3674;
   --input-border-color: #ccc;
+  /** Added light-theme styling for the table created in Assignment 4.2 - Calorie App. */
+  --table-header-background-color: #4f3674;
+  --table-header-color: #fff;
+  --table-border-color: #ddd;
+  --table-hover-background-color: #D6A800;
+  --table-hover-color: #4F3674;
 }
 
 /** The styling for content on the page when dark-mode is selected. */
@@ -47,6 +53,13 @@ body.dark-theme{
   --btn-hover-background-color: #7d4787;
   --btn-hover-color: #fff;
   --input-border-color: #303030;
+  /** Added dark-theme styling for the table created in Assignment 4.2 - Calorie App. */
+  --table-header-background-color: #d176e1;
+  --table-header-color: #fff;
+  --table-border-color: #303030;
+  --table-hover-background-color: #7D4787;
+  --table-hover-color: #fff;
+
 }
 /** The styling for font-family and color within the body element. */
 body {
@@ -158,3 +171,33 @@ h2, h3, h4 {
   border-color: var(--input-border-color);
   box-sizing: border-box;
 }
+
+/** New styling added for the table created in Assignment 4.2 - Calorie App. */
+
+/** The styling for table. */
+.table {
+  border-collapse: separate;
+  border: 1px solid;
+  width: 100%;
+  margin: auto;
+  font-size: 18px;
+}
+
+/** The styling for the table header. */
+.table th {
+  background-color: var(--table-header-background-color);
+  color: var(--table-header-color);
+}
+
+/** The styling for the table data. */
+.table td {
+  border: 1px solid var(--table-border-color);
+}
+
+/** The styling for the table row when hovered over. */
+.table tr:hover {
+  background-color: var(--table-hover-background-color);
+  color: var(--table-hover-color);
+  cursor: pointer;
+}
+
