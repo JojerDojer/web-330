@@ -8,7 +8,7 @@
 */
 
 /* Imports the FoodModel class from ./food-model.js file. */
-import { FoodModel } from './food-model.js'
+import { FoodModel } from './food-model.js';
 
 /* Defines and exports the CalorieConverter class that extends from FoodModel. */
 export class CalorieConverter extends FoodModel {

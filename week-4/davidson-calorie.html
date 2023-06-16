@@ -130,7 +130,7 @@
       };
 
       // Create a click event using the enter key.
-      document.addEventLister('key up', (event) => {
+      document.addEventListener('key up', (event) => {
         if (event.key === 'Enter') {
           document.getElementById('btnSearch').click();
         }
@@ -149,7 +149,7 @@
 
       // Removes the extra comma and closes the tag.
       foodListData += foodListData.slice(0, -2);
-      foodListData += ')</i>'
+      foodListData += ')</i>';
 
       // Assigns the string in foodListData to the span element.
       foodListResult.innerHTML = foodListData;
