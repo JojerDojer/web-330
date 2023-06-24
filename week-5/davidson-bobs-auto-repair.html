@@ -1,0 +1,215 @@
+<!--
+============================================
+; Title: davidson-calorie.html
+; Author: John Davidson
+; Data: 06/16/2023
+; Description: The HTML document for WEB 330 - Assignment 4.2.
+============================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WEB 330 - Enterprise JavaScript II</title>
+
+    <!-- The CSS Styling links. -->
+    <link rel="stylesheet" type="text/css" href="../theme.css">
+    <link rel="stylesheet" type="text/css" href="../site.css">
+    <link rel="stylesheet" type="text/css" href="davidson-bobs-auto-repair.css">
+
+    <!-- The links containing the font family styling. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="../theme.js"></script>
+    <script src="cart-component.js"></script>
+  </head>
+
+  <body class="light-theme">
+
+    <!-- Creates an icon that changes the landing page from light to dark mode. -->
+    <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right"
+    style="font-size: 28px;"><span id="icon-text"></span></i><br>
+
+    <!-- The div that contains all the content about the input card. -->
+    <div class="assign-container">
+
+      <!-- The element containing the h1 header. -->
+      <h1 class="app-header">Welcome to Bob's Automotive Repair Shop!</h1>
+
+      <!-- The div that contains the content about the input card for styling purposes.-->
+      <div class="assign-content">
+
+        <!-- All card content for the product listing Card. -->
+        <div class="card">
+          <div class="card-title">Product Listing</div>
+          <cart-component></cart-component>
+            <div class="card-content">
+              <div class="form">
+                <div class="form-field">
+                  <!-- Creates a label and dropdown menu for Bob's services. -->
+                  <label for="productList">Choose a Product:</label>
+                  <select id="productList" name="productList">
+                    <option value="select">--Select--</option>
+                    <option value="19.99">Oil Change</option>
+                    <option value="18.44">Filter Replacement</option>
+                    <option value="9.99">Wiper Fluid Refill</option>
+                  </select>
+                </div>
+                <!-- Creates a cart icon for users to click to view their selected items. -->
+                <i id="cart-message">To view your shopping cart, click on the cart icon</i>
+                <div class="form-field">
+                  <!-- A button that calculates the total cost of all menu items selected. -->
+                  <button class="btn btn-primary full-width" id="btnAddProduct">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card that displays the details of food item that was searched. -->
+    <div class="assign-container">
+      <div class="assign-content">
+        <div class="card">
+          <div class="card-title">Shopping Cart</div>
+          <div class="card-content">
+
+             <div class="assign-results-text" id="results"></div>
+          </div>
+        </div>
+
+        <!-- The anchor tag that returns users back to the landing page. -->
+        <a href="../index.html" class="return-home">Return</a>
+      </div>
+    </div>
+
+    <script type="module">
+
+      // Imports modules Product and ShoppingCart Modules.
+      import { Product } from "./product.js";
+      import { ShoppingCart } from "./shopping-cart.js";
+
+      // Creates a new object from the ShoppingCart class.
+      const cart = new ShoppingCart();
+
+      // Sets the cart count.
+      setCartCount();
+
+      // Creates an event that adds items to shopping cart when user clicks button.
+      document.getElementById('btnAddProduct').onclick = function() {
+
+        // Assigns the 'productList' ID to a variable.
+        let productList = document.getElementById('productList');
+
+        // Captures the selected text option and assigns it to a variable.
+        let product = productList.options[productList.selectedIndex].text;
+
+        // Captures the selected price value and assigns it to a variable.
+        let productValue = productList.options[productList.selectedIndex].value;
+
+        // If a user selects a product and adds to cart, an alert message is signaled.
+        if(product != '--Select--') {
+          const userProduct = new Product(product, productValue);
+          card.add(userProduct);
+          setCartCount();
+
+          alert(`${userProduct.name} was added to your shopping cart!`);
+
+          // This should be replaced with 'product.options.selectedIndex = productList[0]' TEST IT
+          document.getElementById('productList').options.selectedIndex = productList[0];
+        }
+      }
+
+      // Register onclick event to display the results when the cart icon is clicked.
+      document.getElementById('cartIcon').onclick = function() {
+
+        // Captures the results div and assigns it to a variable.
+        let results = document.getElementById('results');
+
+        // Creates a table for the products to be displayed in.
+        let cartDisplayTable = `
+        <table class="table-hover">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+          </tr>
+          <tbody>`;
+
+        // Loops through the products in the cart and adds them to the table.
+        for (let product of cart) {
+          cartDisplayTable += `
+          <tr>
+            <td>${product.id}</td>
+            <td>${product.name}</td>
+            <td>${product.price}</td>
+          </tr>`;
+        }
+
+        cartDisplayTable += `
+          </tbody>
+        </table>`;
+
+        // Assigns the table of products to the results div.
+        results.innerHTML = cartDisplayTable;
+      }
+
+      // Declares the function that sets the cart count.
+      function setCartCount() {
+        document.getElementById('cart-count').innerHTML = cart.count();
+      }
+
+    </script>
+
+  <!-- The script tag that connects the dark/light mode JS code. -->
+  <script>
+         /**
+         * Set the default theme to light if one has not been set in the browsers localStorage
+         */
+        setDefaultTheme();
+
+        /**
+         * Function to switch the users selected website theme
+         * @param x (this instance)
+         */
+        function toggleMode(x)
+        {
+            let colorTheme = document.body.classList; // Captures the body's CSS class.
+            let iconMode = x.classList; // get the current classes assigned to the triggered button
+
+            /**
+             * If the current body class is set to the light-theme, update the user's preference to the dark-theme in the browsers
+             * local storage.
+             */
+            if (colorTheme.value === "light-theme")
+            {
+                localStorage.clear();
+                localStorage.setItem("mode", "dark-theme");
+                localStorage.setItem("iconMode", "fa-toggle-on");
+                localStorage.setItem("iconText", "Dark Mode");
+            }
+            /**
+             * If the current body class is set to the dark-theme, update the user's preference to the light-theme in the browsers
+             * local storage.
+             */
+            else
+            {
+                localStorage.clear();
+                localStorage.setItem("mode", "light-theme");
+                localStorage.setItem("iconMode", "fa-toggle-off");
+                localStorage.setItem("iconText", "Light Mode");
+            }
+
+            /**
+             * Apply the updated selection to the HTML page elements
+             */
+            colorTheme.value = localStorage.getItem("mode");
+            iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
+            document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
+        }
+  </script>
+  </body>
+</html>

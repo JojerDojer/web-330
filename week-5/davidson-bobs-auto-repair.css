@@ -1,0 +1,56 @@
+/**
+============================================
+; Title: davidson-bobs-auto-repair.css
+; Author: John Davidson
+; Date: 06/24/2023
+; Description: CSS styling for WEB 330 - Assignment 5.2.
+============================================
+*/
+
+/* The styling for the list of food items that can be searched. */
+#cart-message {
+  float: right;
+  color: #df546a;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+/* The styling effect for a cursor hovering over the shopping cart icon. */
+i:hover {
+  cursor: pointer;
+}
+
+/* The styling for the cart-component. */
+cart-component {
+  color: var(--card-title-color);
+  font-size: 20px;
+  text-align: center;
+}
+
+/* Removes the border around the h1 header. */
+h1{
+  border: none;
+}
+
+/* Centers the card and increases the width. */
+.card {
+  margin: auto;
+  width: 100%;
+}
+
+/* The card title text was blending in with the background so I gave it a white color. */
+.card-title {
+  color: white;
+}
+
+/* Centers the results text. */
+#order-total {
+  text-align: center;
+}
+
+/* Moves the button further away from the dessert items. */
+#btnOrder {
+  margin-top: 10px;
+}
+
+
