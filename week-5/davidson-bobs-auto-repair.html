@@ -2,7 +2,7 @@
 ============================================
 ; Title: davidson-calorie.html
 ; Author: John Davidson
-; Data: 06/16/2023
+; Data: 06/25/2023
 ; Description: The HTML document for WEB 330 - Assignment 4.2.
 ============================================
 -->
@@ -52,7 +52,7 @@
                   <!-- Creates a label and dropdown menu for Bob's services. -->
                   <label for="productList">Choose a Product:</label>
                   <select id="productList" name="productList">
-                    <option value="select">--Select--</option>
+                    <option value="">--Select--</option>
                     <option value="19.99">Oil Change</option>
                     <option value="18.44">Filter Replacement</option>
                     <option value="9.99">Wiper Fluid Refill</option>
@@ -113,7 +113,7 @@
         // If a user selects a product and adds to cart, an alert message is signaled.
         if(product != '--Select--') {
           const userProduct = new Product(product, productValue);
-          card.add(userProduct);
+          cart.add(userProduct);
           setCartCount();
 
           alert(`${userProduct.name} was added to your shopping cart!`);

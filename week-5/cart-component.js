@@ -2,7 +2,7 @@
 ============================================
 ; Title: cart-component.js
 ; Author: John Davidson
-; Date: 06/24/2023
+; Date: 06/25/2023
 ; Description: The JavaScript code for WEB 330 - Assignment 5.2.
 ;============================================
 */
