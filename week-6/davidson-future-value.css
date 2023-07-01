@@ -1,0 +1,48 @@
+/**
+============================================
+; Title: davidson-future-value.css
+; Author: John Davidson
+; Date: 06/30/2023
+; Description: CSS styling for WEB 330 - Assignment 6.2.
+============================================
+*/
+
+/* Removes the border around the h1 header. */
+h1{
+  border: none;
+}
+
+/* Centers the card and increases the width. */
+.card {
+  margin: auto;
+  width: 100%;
+}
+
+/* The card title text was blending in with the background so I gave it a white color. */
+.card-title {
+  color: white;
+}
+
+/* The styling for the messages/instructions that are displayed. */
+.danger {
+  float: right;
+  color: #df546a;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+/* The styling for the label elements in each form. */
+.form-label {
+  display: inline-block;
+  padding-top: 1rem;
+}
+
+/* Position the instructions for interest entry closer to the text field. */
+.position {
+  text-align: right;
+
+
+
+
+
+}
