@@ -1,3 +1,12 @@
+<!--
+============================================
+; Title: books.xml
+; Author: John Davidson
+; Data: 07/08/2023
+; Description: The XML document for WEB 330 - Assignment 7.2.
+============================================
+-->
+
 <?xml version="1.0" encoding="UTF-8"?>
 <books>
   <book>
