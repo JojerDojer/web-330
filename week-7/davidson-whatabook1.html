@@ -48,8 +48,7 @@
           <div class="card-title">Book Listing</div>
 
           <!-- The card content containing the book selection table. -->
-          <div class="card-content" id="bookList">
-          </div>
+          <div class="card-content" id="bookList"></div>
         </div>
       </div>
     </div>
@@ -71,24 +70,35 @@
 
     <script type="module">
 
+
       document.addEventListener('DOMContentLoaded', (event) => {
 
-        let fileName = 'books.xml';
-        fetch(fileName)
-          .then(res => res.text())
-          .then(data => {
-            let domParser = new DOMParser();
-            let xmlBooks = domParser.parseFromString(data, 'text/xml');
 
-            loadBooks(xmlBooks);
+        let fileName = 'books.xml'; // Name of the XML file.
+
+
+        fetch(fileName) // Fetch the XML data from the file.
+          .then(res => res.text()) // Gets the response as text.
+          .then(data => {
+
+
+            let domParser = new DOMParser();
+
+            let xmlBooks = domParser.parseFromString(data, 'text/xml'); // Parse the XML data.
+
+            loadBooks(xmlBooks); // Calls the loadBooks function after the data has been parsed.
 
             addIsbnClickEvents();
           })
         });
 
+      // Extracts book data from the XML document and populates the bookList Id with an HTML table.
       function loadBooks(xml) {
-        let books = xml.getElementsByTagName('books');
 
+        // Retrieves all book elements from the XML file.
+        let books = xml.getElementsByTagName('book');
+
+        // Creates a table where the book listing will be stored.
         let tableData = `
         <table id="bookTable" class="table">
           <thead>
@@ -102,60 +112,79 @@
           </thead>
           <tbody>`;
 
+        // Iterate over each book element.
         for (let book of books) {
+
+          // Captures the data value and stores it in its respected variable.
           let isbn = book.getElementsByTagName("isbn")[0].childNodes[0].nodeValue;
           let title = book.getElementsByTagName("title")[0].childNodes[0].nodeValue;
           let description = book.getElementsByTagName("description")[0].childNodes[0].nodeValue;
           let pages = book.getElementsByTagName("pages")[0].childNodes[0].nodeValue;
           let author = book.getElementsByTagName("author")[0].childNodes[0].nodeValue;
 
+          // For each book, append a table row with data.
           tableData += `
           <tr>
-            <td data-value="ISBN"><a href="#" class="isbn-link">${isbn}</a></td>
-            <td data-value="Title">${title}</td>
-            <td data-value="Description">${description}</td>
-            <td data-value="Pages">${pages}</td>
-            <td data-value="Author">${author}</td>
+            <td data-value="ISBN: "><a href="#" class="isbn-link">${isbn}</a></td>
+            <td data-value="Title: ">${title}</td>
+            <td data-value="Description: ">${description}</td>
+            <td data-value="Pages: ">${pages}</td>
+            <td data-value="Author: ">${author}</td>
           </tr>`;
+        }
 
+          // Closing tags for the table.
           tableData += `
             </tbody>
           </table>`;
-        }
 
-        let bookList = document.getElemenyById('bookList');
 
+        // Captures the bookList Id in the form of a variable.
+        let bookList = document.getElementById('bookList');
+
+        // Binds the data to the bookList Id.
         bookList.innerHTML = tableData;
       }
+
 
       function anchorClicked(e) {
 
         e.preventDefault();
 
+        // Acquires the data from the table.
         let self = this;
         let cell = self.parentElement;
         let row = cell.parentElement;
-
         let data = row.querySelectorAll('td');
 
+        // Creates a unordered list that displays the selected book.
         let bookData = `<ul>`;
 
+        // Iterates over each table data element
         for (let field of data) {
+          // Adds a list item for each descriptive property of a selected book.
           bookData += `<li><b>${field.dataset.value}</b>${field.innerText}</li>`;
         }
 
+        // Closes the unordered list.
         bookData += `</ul>`;
 
+        // Captures the selectedBook Id in the form of a variable.
         let selectedBook = document.getElementById('selectedBook');
 
+        // Binds the bookData to the selectedBook id.
         selectedBook.innerHTML = bookData;
       }
 
+      // A function that retrieves all the ISBN links within the table.
       function addIsbnClickEvents() {
+
         let viewButtons = document.querySelectorAll('#bookTable tbody .isbn-link');
 
+        // Iterates over each ISBN link.
         for (let i = 0; i < viewButtons.length; i++) {
-          viewButtons[index].addEventListener('click', anchorClicked);
+          // Adds an event listener to each link that triggers the anchorClicked function.
+          viewButtons[i].addEventListener('click', anchorClicked);
         }
       }
 
